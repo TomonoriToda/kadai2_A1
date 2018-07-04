@@ -44,31 +44,33 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public boolean onTouch(View view, MotionEvent event) {
-        Toast.makeText(getBaseContext(),"タップがされました。",Toast.LENGTH_SHORT).show();
         return true;
     }
 
     @Override
     public boolean onSingleTapConfirmed(MotionEvent motionEvent) {
-
+        Toast.makeText(getBaseContext(),"タップがされました。",Toast.LENGTH_SHORT).show();
+        View v = findViewById(R.id.TextView1);
+        ColorDrawable d = (ColorDrawable)v.getBackground();
+        int color = Color.rgb(255, 0, 0);
+        v.setBackgroundColor(color);
+        TextView messeage;
+        messeage = (TextView)this.findViewById(R.id.TextView1);
+        messeage.setText("タップされましたYo!!");
         return false;
     }
 
     @Override
     public boolean onDoubleTap(MotionEvent motionEvent) {
         Toast.makeText(getBaseContext(),"ダブルタップがされました。",Toast.LENGTH_SHORT).show();
-        //背景色変更
         View v = findViewById(R.id.TextView1);
         ColorDrawable d = (ColorDrawable)v.getBackground();
-        int color2 = d.getColor();
-        int color = Color.rgb(255, 0, 0);
-        if (color != color2) {
-            v.setBackgroundColor(color);
-        }else{
-            color = Color.rgb(0, 255, 0);
-            v.setBackgroundColor(color);
-        }
-        return false;
+        int color = Color.rgb(0, 255, 0);
+        v.setBackgroundColor(color);
+        TextView messeage;
+        messeage = (TextView)this.findViewById(R.id.TextView1);
+        messeage.setText("ダブルタップされましたYo!!");
+         return false;
     }
 
     @Override
@@ -78,9 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public boolean onDown(MotionEvent motionEvent) {
-        int color;
-        color = Color.rgb(0,255,0);
-        findViewById(R.id.TextView1).setBackgroundColor(color);
         return false;
     }
 
@@ -101,7 +100,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public void onLongPress(MotionEvent motionEvent) {
-
+        View v = findViewById(R.id.TextView1);
+        ColorDrawable d = (ColorDrawable)v.getBackground();
+        int color = d.getColor();
+        color = Color.rgb(0, 0, 255);
+        v.setBackgroundColor(color);
+        TextView messeage;
+        messeage = (TextView)this.findViewById(R.id.TextView1);
+        messeage.setText("ロングプレスされたYo!!");
     }
 
     @Override
